@@ -40,7 +40,7 @@ def load_data():
     PREDICTIONS_FILE = "../Optimized/plots/final_predictions_20260125_185830.npz"
     SENSOR_LOCATIONS = "../dcrnn_data-main/metr_la/graph_sensor_locations.csv"
     SCALER_PATH = "../dcrnn_data-main/metr_la/processed_new/scaler.pkl"
-    os.path.join(os.path.dirname(SCALER_PATH)
+    os.path.join(os.path.dirname(SCALER_PATH))
     
     # Load scaler
     with open(SCALER_PATH, 'rb') as f:
