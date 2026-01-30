@@ -15,8 +15,6 @@ from plotly.subplots import make_subplots
 
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-SCALER_PATH = BASE_DIR / "data" / "metr_la" / "processed_new" / "scaler.pkl"
 
 
 # ============================================================================
@@ -41,7 +39,8 @@ def load_data():
     # Paths
     PREDICTIONS_FILE = "../Optimized/plots/final_predictions_20260125_185830.npz"
     SENSOR_LOCATIONS = "../dcrnn_data-main/metr_la/graph_sensor_locations.csv"
-    #SCALER_PATH = "../dcrnn_data-main/metr_la/processed_new/scaler.pkl"
+    SCALER_PATH = "../dcrnn_data-main/metr_la/processed_new/scaler.pkl"
+    os.path.join(os.path.dirname(SCALER_PATH)
     
     # Load scaler
     with open(SCALER_PATH, 'rb') as f:
