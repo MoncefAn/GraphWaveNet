@@ -1,0 +1,12 @@
+{
+  "experiment": "graphwavenet_20260124_161031",
+  "config": {},
+  "best_val_mae": 3.855993677029212,
+  "test_metrics": {
+    "mae": 4.584868809197932,
+    "rmse": 11.811047232689111,
+    "mape": 10.353749596565434
+  },
+  "total_epochs": 100,
+  "timestamp": "2026-01-24T17:38:36.302938"
+}
