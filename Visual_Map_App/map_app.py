@@ -37,14 +37,27 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     """Load and cache all data"""
-    # Paths
-    PREDICTIONS_FILE = "../Optimized/plots/final_predictions_20260125_185830.npz"
-    SENSOR_LOCATIONS = "../dcrnn_data-main/metr_la/graph_sensor_locations.csv"
-    SCALER_PATH = "../dcrnn_data-main/metr_la/processed_new/scaler.pkl"
-    os.path.join(os.path.dirname(SCALER_PATH))
-    
+
+    # Resolve repo root
+    BASE_DIR = Path(__file__).resolve().parent.parent
+
+    PREDICTIONS_FILE = (
+        BASE_DIR / "Optimized" / "plots" / "final_predictions_20260125_185830.npz"
+    )
+    SENSOR_LOCATIONS = (
+        BASE_DIR / "dcrnn_data-main" / "metr_la" / "graph_sensor_locations.csv"
+    )
+    SCALER_PATH = (
+        BASE_DIR / "dcrnn_data-main" / "metr_la" / "processed_new" / "scaler.pkl"
+    )
+
+    # --- sanity check (optional but helpful) ---
+    for p in [PREDICTIONS_FILE, SENSOR_LOCATIONS, SCALER_PATH]:
+        if not p.exists():
+            raise FileNotFoundError(f"Missing required file: {p}")
+
     # Load scaler
-    with open(SCALER_PATH, 'rb') as f:
+    with open(SCALER_PATH, "rb") as f:
         scaler = pickle.load(f)
     
     # Load predictions
