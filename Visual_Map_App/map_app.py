@@ -42,11 +42,6 @@ def load_data():
     SENSOR_LOCATIONS = os.path.join(os.path.dirname(__file__), "..", "dcrnn_data-main", "metr_la", "graph_sensor_locations.csv")
     SCALER_PATH = os.path.join(os.path.dirname(__file__), "..", "dcrnn_data-main" , "metr_la", "processed_new", "scaler.pkl")
 
-    # --- sanity check (optional but helpful) ---
-    for p in [PREDICTIONS_FILE, SENSOR_LOCATIONS, SCALER_PATH]:
-        if not p.exists():
-            raise FileNotFoundError(f"Missing required file: {p}")
-
     # Load scaler
     with open(SCALER_PATH, "rb") as f:
         scaler = pickle.load(f)
