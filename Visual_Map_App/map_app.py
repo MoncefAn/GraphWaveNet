@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import os
-import sklearn
+
 
 from pathlib import Path
 
@@ -38,19 +38,9 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     """Load and cache all data"""
-
-    # Resolve repo root
-    BASE_DIR = Path(__file__).resolve().parent.parent
-
-    PREDICTIONS_FILE = (
-        BASE_DIR / "Optimized" / "plots" / "final_predictions_20260125_185830.npz"
-    )
-    SENSOR_LOCATIONS = (
-        BASE_DIR / "dcrnn_data-main" / "metr_la" / "graph_sensor_locations.csv"
-    )
-    SCALER_PATH = (
-        BASE_DIR / "dcrnn_data-main" / "metr_la" / "processed_new" / "scaler.pkl"
-    )
+    PREDICTIONS_FILE = os.path.join(os.path.dirname(__file__), "..", "Optimized", "plots", "final_predictions_20260125_185830.npz")
+    SENSOR_LOCATIONS = os.path.join(os.path.dirname(__file__), "..", "dcrnn_data-main", "metr_la", "graph_sensor_locations.csv")
+    SCALER_PATH = os.path.join(os.path.dirname(__file__), "..", "dcrnn_data-main" , "metr_la", "processed_new", "scaler.pkl")
 
     # --- sanity check (optional but helpful) ---
     for p in [PREDICTIONS_FILE, SENSOR_LOCATIONS, SCALER_PATH]:
