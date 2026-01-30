@@ -351,6 +351,35 @@ def plot_error_analysis(predictions, targets, sample_idx):
 # ============================================================================
 # METRICS DISPLAY
 # ============================================================================
+def robust_mape(y_true, y_pred, tiny_threshold=0.1, rel_eps=1e-2):
+    """
+    Robust MAPE identical to training logic
+    """
+    y_true = y_true.astype(np.float64)
+    y_pred = y_pred.astype(np.float64)
+
+    # Mask NaNs
+    valid = ~np.isnan(y_true) & ~np.isnan(y_pred)
+    y_true = y_true[valid]
+    y_pred = y_pred[valid]
+
+    if y_true.size == 0:
+        return np.nan
+
+    # Exclude tiny speeds
+    mask = np.abs(y_true) >= tiny_threshold
+    if mask.sum() == 0:
+        return np.nan
+
+    y_t = y_true[mask]
+    y_p = y_pred[mask]
+
+    mean_abs = np.mean(np.abs(y_t))
+    eps = max(rel_eps * mean_abs, 1e-3)
+    denom = np.maximum(np.abs(y_t), eps)
+
+    return np.mean(np.abs((y_t - y_p) / denom)) * 100.0
+
 
 def display_metrics(predictions, targets, sample_idx, horizon_idx):
     """Display key metrics"""
@@ -359,7 +388,7 @@ def display_metrics(predictions, targets, sample_idx, horizon_idx):
     
     mae = np.abs(pred - true).mean()
     rmse = np.sqrt(((pred - true)**2).mean())
-    mape = np.mean(np.abs((pred - true) / (true + 1e-5))) * 100
+    mape = mape = robust_mape(true, pred)
     
     col1, col2, col3, col4 = st.columns(4)
     
