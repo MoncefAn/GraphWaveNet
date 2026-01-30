@@ -34,7 +34,7 @@ st.set_page_config(
 def load_data():
     """Load and cache all data"""
     # Paths
-    PREDICTIONS_FILE = "../SOURCE_withNormOptimized/plots/final_predictions_20260125_185830.npz"
+    PREDICTIONS_FILE = "../Optimized/plots/final_predictions_20260125_185830.npz"
     SENSOR_LOCATIONS = "../dcrnn_data-main/metr_la/graph_sensor_locations.csv"
     SCALER_PATH = "../dcrnn_data-main/metr_la/processed_new/scaler.pkl"
     
