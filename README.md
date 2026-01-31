@@ -116,7 +116,7 @@ Improvements & optimizations
 S. Shleifer, C. McCreery, V. Chitters, Incrementally Improving Graph WaveNet Performance on Traffic Prediction, arXiv:1912.07390 (Dec 2019).
 PDF: https://arxiv.org/pdf/1912.07390
 
-
-::contentReference[oaicite:0]{index=0}
+# Notes
+This repo was prepared as a university mini-project on GNNs & network science (METR-LA experiments). If you use or adapt the code, please attribute the original Graph WaveNet paper and the incremental improvements paper above
 
 
