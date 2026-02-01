@@ -1,7 +1,7 @@
 # Graph WaveNet — Traffic Forecasting (METR-LA)
 
 **Mini-project (GNNs & Network Science)**  
-**Baseline:** Graph WaveNet (paper reproduction) · **Optimized:** architectural & engineering improvements · **Streamlit demo** using optimized predictions
+**Baseline:** Graph WaveNet (paper reproduction) · **Optimized:** architectural & engineering improvements · **Streamlit demo** using optimized predictions , link : https://graphwavenet.streamlit.app/
 
 
 
